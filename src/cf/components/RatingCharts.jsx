@@ -18,15 +18,17 @@ export default function RatingChart({ ratingData }) {
 
         <ResponsiveContainer width="100%" height={300}>
           <LineChart data={data}>
-            <XAxis dataKey="label" />
+            <XAxis dataKey="label" tick={{ fontSize: 12 }} />
+
             <YAxis />
             <Tooltip />
             <Line
               type="monotone"
               dataKey="rating"
               stroke="#7c3aed"
-              strokeWidth={3}
-              dot={false}
+              strokeWidth={2}
+              dot={{ r: 2 }}
+              activeDot={{ r: 6 }}
             />
           </LineChart>
         </ResponsiveContainer>

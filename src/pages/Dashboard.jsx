@@ -1,5 +1,11 @@
 import { useEffect, useState } from "react";
-import { getUserInfo, getUserRating, getUpcomingContests } from "../cf/services/cfApi";
+import {
+  getUserInfo,
+  getUserRating,
+  getUpcomingContests,
+} from "../cf/services/cfApi";
+import UserHeader from "../cf/components/UserHeader";
+import StatisticsSection from "../cf/components/StatisticsSection";
 
 import PerformanceCards from "../cf/components/PerformanceCards";
 import RatingChart from "../cf/components/RatingCharts";
@@ -24,18 +30,24 @@ export default function Dashboard() {
   }, []);
 
   return (
-    <div className="space-y-8">
-      <PerformanceCards user={user} ratingData={ratingData} />
+    <div className="space-y-16">
+      <UserHeader user={user} />
 
-      <div className="grid md:grid-cols-3 gap-6">
-        <div className="md:col-span-2">
-          <RatingChart ratingData={ratingData} />
-        </div>
-        <InsightsPanel ratingData={ratingData} />
-      </div>
+      <section>
+        <RatingChart ratingData={ratingData} />
+      </section>
 
-      <ContestHistory ratingData={ratingData} />
-      <UpcomingContests contests={contests} />
+      <section>
+        <StatisticsSection ratingData={ratingData} />
+      </section>
+
+      <section>
+        <ContestHistory ratingData={ratingData} />
+      </section>
+
+      <section>
+        <UpcomingContests contests={contests} />
+      </section>
     </div>
   );
 }
