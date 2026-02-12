@@ -12,7 +12,7 @@ export const getUserRating = async (handle) => {
   return res.data.result;
 };
 
-export const getContests = async () => {
+export const getUpcomingContests = async () => {
   const res = await axios.get(`${API_BASE}/contest.list`);
   return res.data.result.filter((c) => c.phase === "BEFORE");
 };
